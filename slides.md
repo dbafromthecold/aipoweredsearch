@@ -116,7 +116,7 @@ PRINT @response1
 
 ## Database design
 <!-- .slide: style="text-align: left;"> -->
-<pre><code data-line-numbers="1|3|4-5|6-7|8-9|10-11|12-13">CREATE DATABASE [burrito-bot-db]
+<pre><code data-line-numbers="1|2-3|4-5|6-7|8-9|10-11|12-13">CREATE DATABASE [burrito-bot-db]
  ON  PRIMARY 
 ( NAME = N'burrito-bot-db', FILENAME = N'F:\SQLData1\burrito-bot-db.mdf' ), 
  FILEGROUP [ARCHIVE] 
