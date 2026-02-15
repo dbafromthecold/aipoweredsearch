@@ -48,7 +48,7 @@ GO
 
 
 
--- test connectivity to external model (API key in header and/or using credential)
+-- test connectivity to external model (API key in header or using credential)
 DECLARE @ret1 INT, @response1 NVARCHAR(MAX)
 EXEC @ret1 = sp_invoke_external_rest_endpoint
     @url = N'https://burrito-bot-ai.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2023-05-15',
@@ -71,4 +71,5 @@ BEGIN
     ELSE
         PRINT 'Model test failer. No result returner.';
 END;
+
 GO
