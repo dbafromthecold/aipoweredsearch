@@ -1,4 +1,4 @@
-/***************************************************************************
+/**************************************************************************
 ***************************************************************************
 * AI-Powered Search - Andrew Pruski
 * @dbafromthecold.com
@@ -16,11 +16,14 @@ GO
 
 
 
+-- check the data
 SELECT * FROM dbo.restaurants;
 GO
 
 
 
+-- generate embeddings using external model and insert into table
+-- check the execution plan!
 INSERT INTO [embeddings].[restaurant_embeddings]
 (
     restaurant_id,
@@ -41,7 +44,15 @@ GO
 
 
 
+-- let's have a look at the data!
 SELECT * 
 FROM dbo.restaurants r
 INNER JOIN [embeddings].[restaurant_embeddings] e ON r.id = e.restaurant_id;
 GO
+
+
+
+/*************************************************************************************************
+let's compare the size of the main table to the size of the embeddings table
+sp_spaceused
+*************************************************************************************************/

@@ -1,4 +1,4 @@
-/***************************************************************************
+/**************************************************************************
 ***************************************************************************
 * AI-Powered Search - Andrew Pruski
 * @dbafromthecold.com
@@ -15,8 +15,11 @@ GO
 
 
 
-DECLARE @search_text NVARCHAR(MAX) = 'Find me a restaurant with a 5 star rating';
-DECLARE @search_vector VECTOR(1536) = AI_GENERATE_EMBEDDINGS(@search_text USE MODEL [text-embedding-3-small]);
+-- let's perform a search using VECTOR_DISTANCE()
+-- include the actual execution plan
+-- do we get different results using different distance metrics?
+DECLARE @search_text   NVARCHAR(MAX) = 'Find me a restaurant with a 5 star rating';
+DECLARE @search_vector VECTOR(1536)  = AI_GENERATE_EMBEDDINGS(@search_text USE MODEL [text-embedding-3-small]);
 
 SELECT TOP(1)
 	r.[id], 
@@ -27,7 +30,9 @@ SELECT TOP(1)
 	r.[address], 
 	r.[phone], 
 	r.[url],
-	vector_distance('cosine', @search_vector, e.embeddings) AS distance
+	VECTOR_DISTANCE('cosine', @search_vector, e.embeddings) AS distance
+	--vector_distance('dot', @search_vector, e.embeddings) AS distance
+	--vector_distance('euclidean', @search_vector, e.embeddings) AS distance
 FROM [dbo].[restaurants] r
 INNER JOIN [embeddings].[restaurant_embeddings] e ON r.id = e.restaurant_id
 ORDER BY distance;

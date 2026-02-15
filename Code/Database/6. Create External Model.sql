@@ -1,4 +1,4 @@
-/***************************************************************************
+/**************************************************************************
 ***************************************************************************
 * AI-Powered Search - Andrew Pruski
 * @dbafromthecold.com
@@ -15,17 +15,20 @@ GO
 
 
 
+-- create database master key
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'S0methingS@Str0ng!';  
 GO
 
 
 
+-- create credential to hold API key used to access external model
 CREATE DATABASE SCOPED CREDENTIAL [https://burrito-bot-ai.openai.azure.com]
 WITH IDENTITY = 'HTTPEndpointHeaders', SECRET = N'{"api-key":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}'
 GO
 
 
 
+-- create a reference to the external model that will be used to create embeddings
 CREATE EXTERNAL MODEL [text-embedding-3-small]
 WITH (
     LOCATION = 'https://burrito-bot-ai.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2023-05-15',
@@ -38,22 +41,26 @@ GO
 
 
 
+-- ensure stored procedure functionality enabled
 EXEC sp_configure 'external rest endpoint enabled',1
 RECONFIGURE;
 GO
 
 
 
+-- test connectivity to external model (API key in header and/or using credential)
 DECLARE @ret1 INT, @response1 NVARCHAR(MAX)
 EXEC @ret1 = sp_invoke_external_rest_endpoint
     @url = N'https://burrito-bot-ai.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2023-05-15',
     --@credential = [https://burrito-bot-ai.openai.azure.com],
 	@headers = N'{"api-key":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}',
     @response = @response1 OUTPUT;
-PRINT @response1
+PRINT @response1;
+GO
 
 
 
+-- test generating embedding using AI_GENERATE_EMBEDDINGS referencing external model
 BEGIN
     DECLARE @result NVARCHAR(MAX);
     SET @result = (SELECT CONVERT(NVARCHAR(MAX), AI_GENERATE_EMBEDDINGS(N'test text' USE MODEL [text-embedding-3-small])))

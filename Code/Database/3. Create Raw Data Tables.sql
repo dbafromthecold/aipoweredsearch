@@ -1,4 +1,4 @@
-/***************************************************************************
+/**************************************************************************
 ***************************************************************************
 * AI-Powered Search - Andrew Pruski
 * @dbafromthecold.com
@@ -9,11 +9,13 @@
 **************************************************************************/
 
 
+
 USE [burrito-bot-db]
 GO
 
 
 
+-- create tables to hold raw data, separated out by location
 CREATE TABLE [raw_data].[mexican_restaurants_Belfast](
 	[place_id]			[nvarchar](50) NOT NULL,
 	[name]				[nvarchar](50) NOT NULL,
@@ -25,7 +27,7 @@ CREATE TABLE [raw_data].[mexican_restaurants_Belfast](
 	[latitude]			[float] NOT NULL,
 	[longitude]			[float] NOT NULL,
 	[business_status]	[nvarchar](50) NOT NULL
-) ON [RAW_DATA]
+) ON [RAW_DATA];
 GO
 
 
@@ -41,7 +43,7 @@ CREATE TABLE [raw_data].[mexican_restaurants_Cork](
 	[latitude]			[float] NOT NULL,
 	[longitude]			[float] NOT NULL,
 	[business_status]	[nvarchar](50) NOT NULL
-) ON [RAW_DATA]
+) ON [RAW_DATA];
 GO
 
 
@@ -57,7 +59,7 @@ CREATE TABLE [raw_data].[mexican_restaurants_Dublin](
 	[latitude]			[float] NOT NULL,
 	[longitude]			[float] NOT NULL,
 	[business_status]	[nvarchar](50) NOT NULL
-) ON [RAW_DATA]
+) ON [RAW_DATA];
 GO
 
 
@@ -73,7 +75,7 @@ CREATE TABLE [raw_data].[mexican_restaurants_Galway](
 	[latitude]			[float] NOT NULL,
 	[longitude]			[float] NOT NULL,
 	[business_status]	[nvarchar](50) NOT NULL
-) ON [RAW_DATA]
+) ON [RAW_DATA];
 GO
 
 
@@ -89,7 +91,7 @@ CREATE TABLE [raw_data].[mexican_restaurants_Limerick](
 	[latitude]			[float] NOT NULL,
 	[longitude]			[float] NOT NULL,
 	[business_status]	[nvarchar](50) NOT NULL
-) ON [RAW_DATA]
+) ON [RAW_DATA];
 GO
 
 
@@ -105,5 +107,5 @@ CREATE TABLE [raw_data].[mexican_restaurants_Waterford](
 	[latitude]			[float] NOT NULL,
 	[longitude]			[float] NOT NULL,
 	[business_status]	[nvarchar](50) NOT NULL
-) ON [RAW_DATA]
+) ON [RAW_DATA];
 GO

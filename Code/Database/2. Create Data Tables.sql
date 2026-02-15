@@ -1,4 +1,4 @@
-/***************************************************************************
+/**************************************************************************
 ***************************************************************************
 * AI-Powered Search - Andrew Pruski
 * @dbafromthecold.com
@@ -15,6 +15,7 @@ GO
 
 
 
+-- create schemas, including separate schema for embedding data
 CREATE SCHEMA [archive];
 CREATE SCHEMA [data];
 CREATE SCHEMA [embeddings];
@@ -23,6 +24,7 @@ GO
 
 
 
+-- create main table to hold data
 CREATE TABLE [data].[restaurants](
 	[id]			[int] IDENTITY(1,1) NOT NULL,
 	[place_id]		[nvarchar](255) NOT NULL,
@@ -37,11 +39,13 @@ CREATE TABLE [data].[restaurants](
 (
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [DATA]
-) ON [DATA]
+) ON [DATA];
 GO
 
 
 
+-- create table to hold embedding data, FK reference to main table
+-- size of vector column is dictated by model referenced
 CREATE TABLE [embeddings].[restaurant_embeddings](
 	[id]			[int] IDENTITY(1,1) NOT NULL,
 	[restaurant_id] [int] NULL,
@@ -50,12 +54,12 @@ PRIMARY KEY CLUSTERED
 (
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [EMBEDDINGS]
-) ON [EMBEDDINGS]
+) ON [EMBEDDINGS];
 GO
 
 ALTER TABLE [embeddings].[restaurant_embeddings]  WITH CHECK ADD  CONSTRAINT [FK_restaurant_embeddings_restaurants] FOREIGN KEY([restaurant_id])
-REFERENCES [data].[restaurants] ([id])
+REFERENCES [data].[restaurants] ([id]);
 GO
 
-ALTER TABLE [embeddings].[restaurant_embeddings] CHECK CONSTRAINT [FK_restaurant_embeddings_restaurants]
+ALTER TABLE [embeddings].[restaurant_embeddings] CHECK CONSTRAINT [FK_restaurant_embeddings_restaurants];
 GO

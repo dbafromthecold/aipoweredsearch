@@ -1,4 +1,4 @@
-/***************************************************************************
+/**************************************************************************
 ***************************************************************************
 * AI-Powered Search - Andrew Pruski
 * @dbafromthecold.com
@@ -15,6 +15,7 @@ GO
 
 
 
+-- inserting raw data into main table, adding location URL
 INSERT INTO [dbo].[restaurants]
            ([place_id],
             [name]
@@ -32,7 +33,7 @@ SELECT  [place_id]
         ,[address]
         ,[phone_number]
         ,'https://www.google.com/maps/place/?q=place_id:' + [place_id]
-FROM [raw_data].[mexican_restaurants_belfast]
+FROM [raw_data].[mexican_restaurants_belfast];
 GO
 
 
@@ -54,7 +55,7 @@ SELECT  [place_id]
         ,[address]
         ,[phone_number]
         ,'https://www.google.com/maps/place/?q=place_id:' + [place_id]
-FROM [raw_data].[mexican_restaurants_cork]
+FROM [raw_data].[mexican_restaurants_cork];
 GO
 
 
@@ -76,7 +77,7 @@ SELECT  [place_id]
         ,[address]
         ,[phone_number]
         ,'https://www.google.com/maps/place/?q=place_id:' + [place_id]
-FROM [raw_data].[mexican_restaurants_Dublin]
+FROM [raw_data].[mexican_restaurants_Dublin];
 GO
 
 
@@ -98,7 +99,7 @@ SELECT  [place_id]
         ,[address]
         ,[phone_number]
         ,'https://www.google.com/maps/place/?q=place_id:' + [place_id]
-FROM [raw_data].[mexican_restaurants_galway]
+FROM [raw_data].[mexican_restaurants_galway];
 GO
 
 
@@ -120,7 +121,7 @@ SELECT  [place_id]
         ,[address]
         ,[phone_number]
         ,'https://www.google.com/maps/place/?q=place_id:' + [place_id]
-FROM [raw_data].[mexican_restaurants_limerick]
+FROM [raw_data].[mexican_restaurants_limerick];
 GO
 
 
@@ -142,5 +143,5 @@ SELECT  [place_id]
         ,[address]
         ,[phone_number]
         ,'https://www.google.com/maps/place/?q=place_id:' + [place_id]
-FROM [raw_data].[mexican_restaurants_waterford]
+FROM [raw_data].[mexican_restaurants_waterford];
 GO
