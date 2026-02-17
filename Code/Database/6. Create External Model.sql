@@ -48,18 +48,6 @@ GO
 
 
 
--- test connectivity to external model (API key in header or using credential)
-DECLARE @ret1 INT, @response1 NVARCHAR(MAX)
-EXEC @ret1 = sp_invoke_external_rest_endpoint
-    @url = N'https://burrito-bot-ai.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2023-05-15',
-    --@credential = [https://burrito-bot-ai.openai.azure.com],
-	@headers = N'{"api-key":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}',
-    @response = @response1 OUTPUT;
-PRINT @response1;
-GO
-
-
-
 -- test generating embedding using AI_GENERATE_EMBEDDINGS referencing external model
 BEGIN
     DECLARE @result NVARCHAR(MAX);

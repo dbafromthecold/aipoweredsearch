@@ -61,7 +61,7 @@ also, let's try to update the data in table...it's now read only!
 -- let's perform a vector search! include actual execution plan
 -- do we get different results from VECTOR_DISTANCE() ?
 -- generating embeddings for our query
-DECLARE @question       NVARCHAR(MAX) = 'Find me a restaurant with a 5 star rating';
+DECLARE @question       NVARCHAR(MAX) = 'Find me a the best restaurant in Dublin';
 DECLARE @search_vector  VECTOR(1536)  = AI_GENERATE_EMBEDDINGS(@question USE MODEL [text-embedding-3-small]);
 
 -- using a CTE to store the embeddings data
@@ -76,7 +76,7 @@ DECLARE @search_vector  VECTOR(1536)  = AI_GENERATE_EMBEDDINGS(@question USE MOD
             COLUMN     = [embeddings],
             SIMILAR_TO = @search_vector,
             METRIC     = 'cosine',
-            TOP_N      = @num_results
+            TOP_N      = 5
     )
 )
 
