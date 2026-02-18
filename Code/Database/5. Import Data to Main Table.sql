@@ -16,7 +16,7 @@ GO
 
 
 -- inserting raw data into main table, adding location URL
-INSERT INTO [dbo].[restaurants]
+INSERT INTO [data].[restaurants]
            ([place_id],
             [name]
            ,[city]
@@ -25,20 +25,21 @@ INSERT INTO [dbo].[restaurants]
            ,[address]
            ,[phone]
            ,[url])
-SELECT  [place_id]
-        ,[name]
+SELECT DISTINCT
+        place_id
+        ,place_name 
         ,'Belfast'
-        ,[rating]
-        ,[review_count]
-        ,[address]
-        ,[phone_number]
+        ,place_rating
+        ,place_review_count
+        ,formatted_address
+        ,NULL
         ,'https://www.google.com/maps/place/?q=place_id:' + [place_id]
-FROM [raw_data].[mexican_restaurants_belfast];
+FROM [raw_data].[mexican_restaurant_reviews_Belfast];
 GO
 
 
 
-INSERT INTO [dbo].[restaurants]
+INSERT INTO [data].[restaurants]
            ([place_id],
             [name]
            ,[city]
@@ -47,20 +48,21 @@ INSERT INTO [dbo].[restaurants]
            ,[address]
            ,[phone]
            ,[url])
-SELECT  [place_id]
-        ,[name]
+SELECT DISTINCT
+        place_id
+        ,place_name 
         ,'Cork'
-        ,[rating]
-        ,[review_count]
-        ,[address]
-        ,[phone_number]
+        ,place_rating
+        ,place_review_count
+        ,formatted_address
+        ,NULL
         ,'https://www.google.com/maps/place/?q=place_id:' + [place_id]
-FROM [raw_data].[mexican_restaurants_cork];
+FROM [raw_data].[mexican_restaurant_reviews_Cork];
 GO
 
 
 
-INSERT INTO [dbo].[restaurants]
+INSERT INTO [data].[restaurants]
            ([place_id],
             [name]
            ,[city]
@@ -69,20 +71,21 @@ INSERT INTO [dbo].[restaurants]
            ,[address]
            ,[phone]
            ,[url])
-SELECT  [place_id]
-        ,[name]
+SELECT DISTINCT
+        place_id
+        ,place_name 
         ,'Dublin'
-        ,[rating]
-        ,[review_count]
-        ,[address]
-        ,[phone_number]
+        ,place_rating
+        ,place_review_count
+        ,formatted_address
+        ,NULL
         ,'https://www.google.com/maps/place/?q=place_id:' + [place_id]
-FROM [raw_data].[mexican_restaurants_Dublin];
+FROM [raw_data].[mexican_restaurant_reviews_Dublin];
 GO
 
 
 
-INSERT INTO [dbo].[restaurants]
+INSERT INTO [data].[restaurants]
            ([place_id],
             [name]
            ,[city]
@@ -91,20 +94,21 @@ INSERT INTO [dbo].[restaurants]
            ,[address]
            ,[phone]
            ,[url])
-SELECT  [place_id]
-        ,[name]
+SELECT DISTINCT
+        place_id
+        ,place_name 
         ,'Galway'
-        ,[rating]
-        ,[review_count]
-        ,[address]
-        ,[phone_number]
+        ,place_rating
+        ,place_review_count
+        ,formatted_address
+        ,NULL
         ,'https://www.google.com/maps/place/?q=place_id:' + [place_id]
-FROM [raw_data].[mexican_restaurants_galway];
+FROM [raw_data].[mexican_restaurant_reviews_Galway];
 GO
 
 
 
-INSERT INTO [dbo].[restaurants]
+INSERT INTO [data].[restaurants]
            ([place_id],
             [name]
            ,[city]
@@ -113,20 +117,21 @@ INSERT INTO [dbo].[restaurants]
            ,[address]
            ,[phone]
            ,[url])
-SELECT  [place_id]
-        ,[name]
+SELECT DISTINCT
+        place_id
+        ,place_name 
         ,'Limerick'
-        ,[rating]
-        ,[review_count]
-        ,[address]
-        ,[phone_number]
+        ,place_rating
+        ,place_review_count
+        ,formatted_address
+        ,NULL
         ,'https://www.google.com/maps/place/?q=place_id:' + [place_id]
-FROM [raw_data].[mexican_restaurants_limerick];
+FROM [raw_data].[mexican_restaurant_reviews_Limerick];
 GO
 
 
 
-INSERT INTO [dbo].[restaurants]
+INSERT INTO [data].[restaurants]
            ([place_id],
             [name]
            ,[city]
@@ -135,13 +140,14 @@ INSERT INTO [dbo].[restaurants]
            ,[address]
            ,[phone]
            ,[url])
-SELECT  [place_id]
-        ,[name]
+SELECT DISTINCT
+        place_id
+        ,place_name 
         ,'Waterford'
-        ,[rating]
-        ,[review_count]
-        ,[address]
-        ,[phone_number]
+        ,place_rating
+        ,place_review_count
+        ,formatted_address
+        ,NULL
         ,'https://www.google.com/maps/place/?q=place_id:' + [place_id]
-FROM [raw_data].[mexican_restaurants_waterford];
+FROM [raw_data].[mexican_restaurant_reviews_Waterford];
 GO

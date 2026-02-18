@@ -43,6 +43,33 @@ CREATE TABLE [data].[restaurants](
 GO
 
 
+-- create table to hold review data
+CREATE TABLE [data].[reviews](
+	review_id				INT IDENTITY(1,1) PRIMARY KEY,
+	restaurant_id			INT,
+	place_id				NVARCHAR(50),
+	review_name				NVARCHAR(50),
+	review_rating			TINYINT,
+	REVIEW_PUBLISHED_UTC	NVARCHAR(50),
+	REVIEW_TEXT				NVARCHAR(2400))
+GO
+
+ALTER TABLE [data].[reviews] WITH CHECK ADD  CONSTRAINT [FK_data_reviews] FOREIGN KEY([restaurant_id])
+REFERENCES [data].[restaurants] ([id]);
+GO
+
+ALTER TABLE [data].[reviews] CHECK CONSTRAINT [FK_data_reviews];
+GO
+
+
+
+
+
+-- BELOW NEEDS TO BE UPDATED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+
 
 -- create table to hold embedding data, FK reference to main table
 -- size of vector column is dictated by model referenced
