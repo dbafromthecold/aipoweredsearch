@@ -17,6 +17,7 @@ GO
 
 -- ensure database doesn't already exist
 IF EXISTS(SELECT 1 FROM sys.databases WHERE name = 'burrito-bot-db')
+	ALTER DATABASE [burrito-bot-db] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
 	DROP DATABASE [burrito-bot-db];
 GO
 
