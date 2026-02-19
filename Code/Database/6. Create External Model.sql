@@ -16,7 +16,7 @@ GO
 
 
 -- create database master key
-CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'S0methingS@Str0ng!';  
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Th1s1s@Str0ngP@assw0rd!';  
 GO
 
 
@@ -59,5 +59,4 @@ BEGIN
     ELSE
         PRINT 'Model test failer. No result returner.';
 END;
-
 GO

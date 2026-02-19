@@ -16,96 +16,120 @@ GO
 
 
 -- create tables to hold raw data, separated out by location
-CREATE TABLE [raw_data].[mexican_restaurants_Belfast](
-	[place_id]			[nvarchar](50) NOT NULL,
-	[name]				[nvarchar](50) NOT NULL,
-	[rating]			[float] NOT NULL,
-	[review_count]		[smallint] NOT NULL,
-	[price_level]		[tinyint] NULL,
-	[address]			[nvarchar](100) NOT NULL,
-	[phone_number]		[nvarchar](50) NULL,
-	[latitude]			[float] NOT NULL,
-	[longitude]			[float] NOT NULL,
-	[business_status]	[nvarchar](50) NOT NULL
-) ON [RAW_DATA];
+CREATE TABLE [raw_data].[mexican_restaurant_reviews_Belfast](
+	[place_id]				[nvarchar](50) NOT NULL,
+	[place_name]			[nvarchar](50) NOT NULL,
+	[formatted_address]		[nvarchar](100) NOT NULL,
+	[latitude]				[float] NOT NULL,
+	[longitude]				[float] NOT NULL,
+	[place_rating]			[float] NOT NULL,
+	[place_review_count]	[smallint] NOT NULL,
+	[review_name]			[nvarchar](150) NOT NULL,
+	[review_rating]			[tinyint] NOT NULL,
+	[review_published_utc]	[nvarchar](50) NOT NULL,
+	[review_relative_time]	[nvarchar](50) NOT NULL,
+	[review_text]			[nvarchar](max) NOT NULL,
+	[review_original_text]	[nvarchar](max) NOT NULL,
+	[review_maps_uri]		[nvarchar](200) NOT NULL
+) ON [RAW_DATA]
 GO
 
 
 
-CREATE TABLE [raw_data].[mexican_restaurants_Cork](
-	[place_id]			[nvarchar](50) NOT NULL,
-	[name]				[nvarchar](50) NOT NULL,
-	[rating]			[float] NOT NULL,
-	[review_count]		[smallint] NOT NULL,
-	[price_level]		[tinyint] NULL,
-	[address]			[nvarchar](100) NOT NULL,
-	[phone_number]		[nvarchar](50) NULL,
-	[latitude]			[float] NOT NULL,
-	[longitude]			[float] NOT NULL,
-	[business_status]	[nvarchar](50) NOT NULL
-) ON [RAW_DATA];
+CREATE TABLE [raw_data].[mexican_restaurant_reviews_Cork](
+	[place_id]				[nvarchar](50) NOT NULL,
+	[place_name]			[nvarchar](50) NOT NULL,
+	[formatted_address]		[nvarchar](100) NOT NULL,
+	[latitude]				[float] NOT NULL,
+	[longitude]				[float] NOT NULL,
+	[place_rating]			[float] NOT NULL,
+	[place_review_count]	[smallint] NOT NULL,
+	[review_name]			[nvarchar](150) NOT NULL,
+	[review_rating]			[tinyint] NOT NULL,
+	[review_published_utc]	[nvarchar](50) NOT NULL,
+	[review_relative_time]	[nvarchar](50) NOT NULL,
+	[review_text]			[nvarchar](max) NOT NULL,
+	[review_original_text]	[nvarchar](max) NOT NULL,
+	[review_maps_uri]		[nvarchar](200) NOT NULL
+) ON [RAW_DATA]
 GO
 
 
 
-CREATE TABLE [raw_data].[mexican_restaurants_Dublin](
-	[place_id]			[nvarchar](50) NOT NULL,
-	[name]				[nvarchar](50) NOT NULL,
-	[rating]			[float] NOT NULL,
-	[review_count]		[smallint] NOT NULL,
-	[price_level]		[tinyint] NULL,
-	[address]			[nvarchar](100) NOT NULL,
-	[phone_number]		[nvarchar](50) NULL,
-	[latitude]			[float] NOT NULL,
-	[longitude]			[float] NOT NULL,
-	[business_status]	[nvarchar](50) NOT NULL
-) ON [RAW_DATA];
+CREATE TABLE [raw_data].[mexican_restaurant_reviews_Dublin](
+	[place_id]				[nvarchar](50) NOT NULL,
+	[place_name]			[nvarchar](50) NOT NULL,
+	[formatted_address]		[nvarchar](100) NOT NULL,
+	[latitude]				[float] NOT NULL,
+	[longitude]				[float] NOT NULL,
+	[place_rating]			[float] NOT NULL,
+	[place_review_count]	[smallint] NOT NULL,
+	[review_name]			[nvarchar](150) NOT NULL,
+	[review_rating]			[tinyint] NOT NULL,
+	[review_published_utc]	[nvarchar](50) NOT NULL,
+	[review_relative_time]	[nvarchar](50) NOT NULL,
+	[review_text]			[nvarchar](max) NOT NULL,
+	[review_original_text]	[nvarchar](max) NOT NULL,
+	[review_maps_uri]		[nvarchar](200) NOT NULL
+) ON [RAW_DATA]
 GO
 
 
 
-CREATE TABLE [raw_data].[mexican_restaurants_Galway](
-	[place_id]			[nvarchar](50) NOT NULL,
-	[name]				[nvarchar](50) NOT NULL,
-	[rating]			[float] NOT NULL,
-	[review_count]		[smallint] NOT NULL,
-	[price_level]		[tinyint] NULL,
-	[address]			[nvarchar](100) NOT NULL,
-	[phone_number]		[nvarchar](50) NULL,
-	[latitude]			[float] NOT NULL,
-	[longitude]			[float] NOT NULL,
-	[business_status]	[nvarchar](50) NOT NULL
-) ON [RAW_DATA];
+CREATE TABLE [raw_data].[mexican_restaurant_reviews_Galway](
+	[place_id]				[nvarchar](50) NOT NULL,
+	[place_name]			[nvarchar](50) NOT NULL,
+	[formatted_address]		[nvarchar](100) NOT NULL,
+	[latitude]				[float] NOT NULL,
+	[longitude]				[float] NOT NULL,
+	[place_rating]			[float] NOT NULL,
+	[place_review_count]	[smallint] NOT NULL,
+	[review_name]			[nvarchar](150) NOT NULL,
+	[review_rating]			[tinyint] NOT NULL,
+	[review_published_utc]	[nvarchar](50) NOT NULL,
+	[review_relative_time]	[nvarchar](50) NOT NULL,
+	[review_text]			[nvarchar](max) NOT NULL,
+	[review_original_text]	[nvarchar](max) NOT NULL,
+	[review_maps_uri]		[nvarchar](200) NOT NULL
+) ON [RAW_DATA]
 GO
 
 
 
-CREATE TABLE [raw_data].[mexican_restaurants_Limerick](
-	[place_id]			[nvarchar](50) NOT NULL,
-	[name]				[nvarchar](50) NOT NULL,
-	[rating]			[float] NOT NULL,
-	[review_count]		[smallint] NOT NULL,
-	[price_level]		[tinyint] NULL,
-	[address]			[nvarchar](100) NOT NULL,
-	[phone_number]		[nvarchar](50) NULL,
-	[latitude]			[float] NOT NULL,
-	[longitude]			[float] NOT NULL,
-	[business_status]	[nvarchar](50) NOT NULL
-) ON [RAW_DATA];
+CREATE TABLE [raw_data].[mexican_restaurant_reviews_Limerick](
+	[place_id]				[nvarchar](50) NOT NULL,
+	[place_name]			[nvarchar](50) NOT NULL,
+	[formatted_address]		[nvarchar](100) NOT NULL,
+	[latitude]				[float] NOT NULL,
+	[longitude]				[float] NOT NULL,
+	[place_rating]			[float] NOT NULL,
+	[place_review_count]	[smallint] NOT NULL,
+	[review_name]			[nvarchar](150) NOT NULL,
+	[review_rating]			[tinyint] NOT NULL,
+	[review_published_utc]	[nvarchar](50) NOT NULL,
+	[review_relative_time]	[nvarchar](50) NOT NULL,
+	[review_text]			[nvarchar](max) NOT NULL,
+	[review_original_text]	[nvarchar](max) NOT NULL,
+	[review_maps_uri]		[nvarchar](200) NOT NULL
+) ON [RAW_DATA]
 GO
 
 
 
-CREATE TABLE [raw_data].[mexican_restaurants_Waterford](
-	[place_id]			[nvarchar](50) NOT NULL,
-	[name]				[nvarchar](50) NOT NULL,
-	[rating]			[float] NOT NULL,
-	[review_count]		[smallint] NOT NULL,
-	[price_level]		[tinyint] NULL,
-	[address]			[nvarchar](100) NOT NULL,
-	[phone_number]		[nvarchar](50) NULL,
-	[latitude]			[float] NOT NULL,
-	[longitude]			[float] NOT NULL,
-	[business_status]	[nvarchar](50) NOT NULL
-) ON [RAW_DATA];
+CREATE TABLE [raw_data].[mexican_restaurant_reviews_Waterford](
+	[place_id]				[nvarchar](50) NOT NULL,
+	[place_name]			[nvarchar](50) NOT NULL,
+	[formatted_address]		[nvarchar](100) NOT NULL,
+	[latitude]				[float] NOT NULL,
+	[longitude]				[float] NOT NULL,
+	[place_rating]			[float] NOT NULL,
+	[place_review_count]	[smallint] NOT NULL,
+	[review_name]			[nvarchar](150) NOT NULL,
+	[review_rating]			[tinyint] NOT NULL,
+	[review_published_utc]	[nvarchar](50) NOT NULL,
+	[review_relative_time]	[nvarchar](50) NOT NULL,
+	[review_text]			[nvarchar](max) NOT NULL,
+	[review_original_text]	[nvarchar](max) NOT NULL,
+	[review_maps_uri]		[nvarchar](200) NOT NULL
+) ON [RAW_DATA]
 GO

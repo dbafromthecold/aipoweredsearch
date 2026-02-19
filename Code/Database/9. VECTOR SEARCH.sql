@@ -99,7 +99,7 @@ GO
 SELECT rv.restaurant_id, rv.review_text
 FROM [data].[reviews] rv
 INNER JOIN [data].[restaurants] r ON rv.restaurant_id = r.id
-WHERE r.name IN ('Texas Steakout','House Limerick')
+WHERE r.name IN ('Texas Steakout','777')
 ORDER BY rv.restaurant_id ASC;
 GO
 
@@ -134,7 +134,6 @@ BEGIN
     ) AS vs
     INNER JOIN [data].[restaurants] r ON r.id = e.restaurant_id
     ORDER BY vs.distance;
-
 END
 GO
 
@@ -171,5 +170,23 @@ SELECT rv.restaurant_id, rv.review_text
 FROM [data].[reviews] rv
 INNER JOIN [data].[restaurants] r ON rv.restaurant_id = r.id
 WHERE r.name IN ('Texas Steakout','Town Square')
+ORDER BY rv.restaurant_id ASC;
+GO
+
+
+
+-- anyone want to ask a question?
+EXEC dbo.search_restaurants
+    @question = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+    @num_results= 5;
+GO
+
+
+
+-- check the reviews again
+SELECT rv.restaurant_id, rv.review_text
+FROM [data].[reviews] rv
+INNER JOIN [data].[restaurants] r ON rv.restaurant_id = r.id
+WHERE r.name IN ('XXXXXXXXXXXXXXX','XXXXXXXXXXXXXXX')
 ORDER BY rv.restaurant_id ASC;
 GO

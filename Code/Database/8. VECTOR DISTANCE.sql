@@ -41,7 +41,9 @@ GO
 
 
 -- let's have a look at the reviews to see why that restaurant was selected
-SELECT * 
-FROM [data].[reviews]
-WHERE restaurant_id = 202;
+SELECT rv.restaurant_id, rv.review_text
+FROM [data].[reviews] rv
+INNER JOIN [data].[restaurants] r ON rv.restaurant_id = r.id
+WHERE r.name = 'Texas Steakout'
+ORDER BY rv.restaurant_id ASC;
 GO
