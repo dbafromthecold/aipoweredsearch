@@ -18,7 +18,7 @@ GO
 -- let's perform a search using VECTOR_DISTANCE()
 -- include the actual execution plan
 -- do we get different results using different distance metrics?
-DECLARE @search_text   NVARCHAR(MAX) = 'Find me a restaurant with a 5 star rating';
+DECLARE @search_text   NVARCHAR(MAX) = 'Find me a restaurant with a good atmosphere';
 DECLARE @search_vector VECTOR(1536)  = AI_GENERATE_EMBEDDINGS(@search_text USE MODEL [text-embedding-3-small]);
 
 SELECT TOP(1)
@@ -33,7 +33,15 @@ SELECT TOP(1)
 	VECTOR_DISTANCE('cosine', @search_vector, e.embeddings) AS distance
 	--vector_distance('dot', @search_vector, e.embeddings) AS distance
 	--vector_distance('euclidean', @search_vector, e.embeddings) AS distance
-FROM [dbo].[restaurants] r
-INNER JOIN [embeddings].[restaurant_embeddings] e ON r.id = e.restaurant_id
+FROM [data].[restaurants] r
+INNER JOIN [embeddings].[restaurant_review_embeddings] e ON r.id = e.restaurant_id
 ORDER BY distance;
+GO
+
+
+
+-- let's have a look at the reviews to see why that restaurant was selected
+SELECT * 
+FROM [data].[reviews]
+WHERE restaurant_id = 202;
 GO

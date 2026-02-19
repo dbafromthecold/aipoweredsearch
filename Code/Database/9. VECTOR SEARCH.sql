@@ -15,28 +15,21 @@ GO
 
 
 
--- PREVIEW_FEATURES is a pre-requisite
+-- PREVIEW_FEATURES is a pre-requisite as of current SQL version
 ALTER DATABASE SCOPED CONFIGURATION SET PREVIEW_FEATURES = ON
 GO
 
 
 
--- earlier versions of SQL 2025 required these trace flags
---DBCC TRACEON (466, 474, 13981, -1);
---GO
-
-
-
-
 -- let's get the size of the table before we create that index
-EXEC sp_spaceused 'embeddings.restaurant_embeddings'
+EXEC sp_spaceused 'embeddings.restaurant_review_embeddings'
 GO
 
 
 
 -- creating the index referencing the diskann algorithm (only one supported)
 -- include the actual execution plan
-CREATE VECTOR INDEX vec_idx ON [embeddings].[restaurant_embeddings]([embeddings])
+CREATE VECTOR INDEX vec_idx ON [embeddings].[restaurant_review_embeddings]([embeddings])
 WITH (
     METRIC  = 'cosine', -- euclidean and dot also supported
     TYPE    = 'diskann',
@@ -55,8 +48,9 @@ DBCC PAGE
 *************************************************************************************************/
 
 
+
 -- also, let's try to update the data in table...it's now read only!
-INSERT INTO [embeddings].[restaurant_embeddings]
+INSERT INTO [embeddings].[restaurant_review_embeddings]
            ([restaurant_id]
            ,[embeddings])
      VALUES
@@ -67,7 +61,7 @@ GO
 
 
 -- and let's have a look at the size of the table now
-EXEC sp_spaceused 'embeddings.restaurant_embeddings'
+EXEC sp_spaceused 'embeddings.restaurant_review_embeddings'
 GO
 
 
@@ -75,28 +69,40 @@ GO
 -- let's perform a vector search! include actual execution plan
 -- do we get different results from VECTOR_DISTANCE() ?
 -- generating embeddings for our query
-DECLARE @question       NVARCHAR(MAX) = 'best tacos in Dublin';
+DECLARE @question       NVARCHAR(MAX) = 'Find me a restaurant with a good atmosphere';
 DECLARE @search_vector  VECTOR(1536)  = AI_GENERATE_EMBEDDINGS(@question USE MODEL [text-embedding-3-small]);
 
 SELECT
-    r.[name] AS [Name], 
-    r.[city] AS [City], 
+    r.[id]              AS [restaurant_id],
+    r.[name]            AS [Name], 
+    r.[city]            AS [City], 
     ROUND(r.[rating],1) AS [Rating], 
-    r.[review_count] AS [Review Count], 
-    r.[address] AS [Address], 
-    r.[phone] AS [Phone Number], 
-    r.[url] AS [URL],
+    r.[review_count]    AS [Review Count], 
+    r.[address]         AS [Address], 
+    r.[phone]           AS [Phone Number], 
+    r.[url]             AS [URL],
     vs.distance
 FROM VECTOR_SEARCH(
-    TABLE      = [embeddings].[restaurant_embeddings] AS e,
+    TABLE      = [embeddings].[restaurant_review_embeddings] AS e,
     COLUMN     = [embeddings],
     SIMILAR_TO = @search_vector,
     METRIC     = 'cosine',
     TOP_N      = 5
 ) AS vs
-INNER JOIN dbo.restaurants r ON r.id = e.restaurant_id
+INNER JOIN [data].[restaurants] r ON r.id = e.restaurant_id
 ORDER BY vs.distance;
 GO
+
+
+
+-- let's have a look at the reviews for a couple of those results
+SELECT rv.restaurant_id, rv.review_text
+FROM [data].[reviews] rv
+INNER JOIN [data].[restaurants] r ON rv.restaurant_id = r.id
+WHERE r.name IN ('Texas Steakout','House Limerick')
+ORDER BY rv.restaurant_id ASC;
+GO
+
 
 
 -- create a stored procedure to perform searches
@@ -120,13 +126,13 @@ BEGIN
         r.[url] AS [URL],
         vs.distance
     FROM VECTOR_SEARCH(
-        TABLE      = [embeddings].[restaurant_embeddings] AS e,
+        TABLE      = [embeddings].[restaurant_review_embeddings] AS e,
         COLUMN     = [embeddings],
         SIMILAR_TO = @search_vector,
         METRIC     = 'cosine',
         TOP_N      = @num_results
     ) AS vs
-    INNER JOIN dbo.restaurants r ON r.id = e.restaurant_id
+    INNER JOIN [data].[restaurants] r ON r.id = e.restaurant_id
     ORDER BY vs.distance;
 
 END
@@ -136,6 +142,34 @@ GO
 
 -- let's test the stored procedure
 EXEC dbo.search_restaurants
-    @question = 'Find me a restaurant with a 3 star rating',
+    @question = 'Where do people say the food reminds them of Mexico?',
     @num_results= 5;
+GO
+
+
+
+-- and have a look at the reviews for a couple of those results
+SELECT rv.restaurant_id, rv.review_text
+FROM [data].[reviews] rv
+INNER JOIN [data].[restaurants] r ON rv.restaurant_id = r.id
+WHERE r.name IN ('The Mex','Adobo Mexico')
+ORDER BY rv.restaurant_id ASC;
+GO
+
+
+
+-- let's do one more!
+EXEC dbo.search_restaurants
+    @question = 'Good place for a casual date night?',
+    @num_results= 5;
+GO
+
+
+
+-- and check the reviews again
+SELECT rv.restaurant_id, rv.review_text
+FROM [data].[reviews] rv
+INNER JOIN [data].[restaurants] r ON rv.restaurant_id = r.id
+WHERE r.name IN ('Texas Steakout','Town Square')
+ORDER BY rv.restaurant_id ASC;
 GO
