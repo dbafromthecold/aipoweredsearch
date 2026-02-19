@@ -8,6 +8,9 @@ https://dbafromthecold.github.io/aipoweredsearch<br>
 
 # Resources
 
+Massive Text Embedding Benchmark:<br>
+https://huggingface.co/spaces/mteb/leaderboard<br>
+<br>
 Vector search and vector indexes in the SQL Database Engine:<br>
 https://learn.microsoft.com/en-us/sql/sql-server/ai/vectors <br>
 <br>
