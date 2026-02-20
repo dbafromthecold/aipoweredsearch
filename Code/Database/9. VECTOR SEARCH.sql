@@ -124,7 +124,7 @@ BEGIN
         r.[address] AS [Address], 
         r.[phone] AS [Phone Number], 
         r.[url] AS [URL],
-        vs.distance,
+        --vs.distance,
         combined_reviews.reviews AS [combined_reviews]
     FROM VECTOR_SEARCH(
         TABLE      = [embeddings].[restaurant_review_embeddings] AS e,
