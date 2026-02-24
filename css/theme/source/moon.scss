@@ -56,3 +56,10 @@ $selectionBackgroundColor: $magenta;
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
+
+
+// ---- Custom layout overrides ----
+.reveal .slides {
+  width: 95% !important;
+  max-width: 1600px !important;
+}

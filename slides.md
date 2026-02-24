@@ -158,7 +158,7 @@ PRINT @response1
 ---
 
 ## But what are embeddings?
-
+<!-- .slide: style="text-align: left;"> -->
 Embeddings are numeric vectors representing the semantic meaning of data <br>
 They position similar concepts closer together in high-dimensional space <br>
 In SQL Server, they are stored using the VECTOR data type
