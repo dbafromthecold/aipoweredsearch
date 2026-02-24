@@ -39,13 +39,9 @@ GO
 
 
 
-/*************************************************************************************************
-let's inspect the data of that index
-DBCC IND
-DBCC PAGE
-
-
-*************************************************************************************************/
+-- here's the index!
+SELECT * FROM sys.vector_indexes;
+GO
 
 
 
@@ -124,8 +120,7 @@ BEGIN
         r.[address] AS [Address], 
         r.[phone] AS [Phone Number], 
         r.[url] AS [URL],
-        --vs.distance,
-        combined_reviews.reviews AS [combined_reviews]
+        vs.distance
     FROM VECTOR_SEARCH(
         TABLE      = [embeddings].[restaurant_review_embeddings] AS e,
         COLUMN     = [embeddings],
@@ -134,19 +129,6 @@ BEGIN
         TOP_N      = @num_results
     ) AS vs
     INNER JOIN [data].[restaurants] r ON r.id = e.restaurant_id
-    INNER JOIN (SELECT
-                    rv.restaurant_id as restaurant_id,
-                    CONCAT(
-                        d.name, ' is a Mexican restaurant in ', d.city, '. ',
-                        'Customer reviews say:', CHAR(13) + CHAR(10),
-                        STRING_AGG(
-                            ' - ' + REPLACE(rv.review_text, CHAR(13) + CHAR(10), ' '),
-                            CHAR(13) + CHAR(10)
-                        ) WITHIN GROUP (ORDER BY rv.review_published_utc)
-                    ) as reviews
-                FROM [data].[reviews] rv
-                INNER JOIN [data].[restaurants] d ON rv.restaurant_id = d.id
-                GROUP BY rv.restaurant_id, d.name, d.city) as combined_reviews ON r.id = combined_reviews.restaurant_id
     ORDER BY vs.distance;
 END
 GO

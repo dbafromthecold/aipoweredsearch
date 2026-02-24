@@ -47,3 +47,34 @@ INNER JOIN [data].[restaurants] r ON rv.restaurant_id = r.id
 WHERE r.name = 'Texas Steakout'
 ORDER BY rv.restaurant_id ASC;
 GO
+
+
+
+-- let's do one more search using VECTOR_DISTANCE()
+DECLARE @search_text   NVARCHAR(MAX) = 'Find me a restaurant with authentic mexican food';
+DECLARE @search_vector VECTOR(1536)  = AI_GENERATE_EMBEDDINGS(@search_text USE MODEL [text-embedding-3-small]);
+
+SELECT TOP(1)
+	r.[id], 
+	r.[name], 
+	r.[city], 
+	r.[rating], 
+	r.[review_count], 
+	r.[address], 
+	r.[phone], 
+	r.[url],
+	VECTOR_DISTANCE('cosine', @search_vector, e.embeddings) AS distance
+FROM [data].[restaurants] r
+INNER JOIN [embeddings].[restaurant_review_embeddings] e ON r.id = e.restaurant_id
+ORDER BY distance;
+GO
+
+
+
+-- and have a look at the reviews to see why that restaurant was selected
+SELECT rv.restaurant_id, rv.review_text
+FROM [data].[reviews] rv
+INNER JOIN [data].[restaurants] r ON rv.restaurant_id = r.id
+WHERE r.name = 'Texas Steakout'
+ORDER BY rv.restaurant_id ASC;
+GO
