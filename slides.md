@@ -28,6 +28,19 @@ Starting from the ground up, we'll build an AI-Powered Search tool
 
 ---
 
+## Querying Data
+<!-- .slide: style="text-align: left;"> -->
+"Find me a restaurant in 
+<span class="fragment highlight-blue" data-fragment-index="1">Dublin</span> 
+with a 
+<span class="fragment highlight-blue" data-fragment-index="2">4 star</span> rating"
+<br><br>
+<span class="fragment fade-in" data-fragment-index="3">
+"Find me a restaurant with a cozy atmosphere"
+</span>
+
+---
+
 ## Semantic Similarity Searching
 <!-- .slide: style="text-align: left;"> -->
 Semantic similarity search finds results with similar meaning, even when the exact words differ, by comparing vector embeddings generated from data.
