@@ -231,7 +231,7 @@ $$
 \mathrm{sim}(\mathbf{a}, \mathbf{b})
 =
 \frac{\mathbf{a} \cdot \mathbf{b}}
-     {\Vert \mathbf{a} \Vert \, \Vert \mathbf{b} \Vert}
+     {\Vert \mathbf{a} \Vert \ \Vert \mathbf{b} \Vert}
 $$
 
 - Measures the angle between vectors, not their size
