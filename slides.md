@@ -166,6 +166,27 @@ In SQL Server, they are stored using the VECTOR data type
 ---
 
 ## The Vector Data Type in SQL 2025
+<!-- .slide: style="text-align: left;" -->
+
+<div style="display: flex; align-items: center; gap: 40px;">
+
+<div style="flex: 1;">
+- Stored in an optimized binary format  
+- Exposed as JSON array of floating point numbers  
+- Dictated by external model  
+- Float32 & Float16 supported  
+</div>
+
+<div style="flex: 1; text-align: center;">
+
+<img src="images/vector_column.png" style="max-width: 100%; height: auto;">
+
+</div>
+</div>
+
+---
+
+## The Vector Data Type in SQL 2025
 <!-- .slide: style="text-align: left;"> -->
 <img src="images/vector_column.png" style="float: right"/>
 <br>
