@@ -171,12 +171,12 @@ PRINT @response1
 <div style="display: flex; align-items: center; gap: 20px;">
 
 <div style="flex: 1;">
-- Stored in an optimized <br>
-  binary format <br>
-- Exposed as JSON array of <br>
-  floating point numbers <br>
-- Dictated by external model  <br>
-- Float32 & Float16 supported  
+<ul>
+  <li>Stored in an optimized binary format</li>
+  <li>Exposed as JSON array of floating point numbers</li>
+  <li>Dictated by external model</li>
+  <li>Float32 & Float16 supported</li>
+</ul>
 </div>
 
 <div style="flex: 1; text-align: center;">
@@ -185,18 +185,6 @@ PRINT @response1
 
 </div>
 </div>
-
----
-
-## The Vector Data Type in SQL 2025
-<!-- .slide: style="text-align: left;"> -->
-<img src="images/vector_column.png" style="float: right"/>
-<br>
-<br>
-- Stored in an optimized binary format<br>
-- Exposed as JSON array of floating point numbers<br>
-- Dictated by external model<br>
-- Float32 & Float16 supported<br>
 
 ---
 
