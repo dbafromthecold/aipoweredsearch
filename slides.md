@@ -159,7 +159,7 @@ PRINT @response1
 
 ## But what are embeddings?
 <!-- .slide: style="text-align: left;"> -->
-  Embeddings are numeric vectors representing the semantic meaning of data <br>
+- Embeddings are numeric vectors representing the semantic meaning of data <br>
 - They position similar concepts closer together in high-dimensional space <br>
 - In SQL Server, they are stored using the VECTOR data type
 
@@ -168,11 +168,13 @@ PRINT @response1
 ## The Vector Data Type in SQL 2025
 <!-- .slide: style="text-align: left;" -->
 
-<div style="display: flex; align-items: center; gap: 40px;">
+<div style="display: flex; align-items: center; gap: 20px;">
 
 <div style="flex: 1;">
-- Stored in an optimized binary format <br>
-- Exposed as JSON array of floating point numbers <br>
+- Stored in an optimized <br>
+  binary format <br>
+- Exposed as JSON array of <br>
+  floating point numbers <br>
 - Dictated by external model  <br>
 - Float32 & Float16 supported  
 </div>
