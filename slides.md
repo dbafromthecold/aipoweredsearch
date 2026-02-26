@@ -193,27 +193,41 @@ PRINT @response1
 
 <ul>
   <li class="fragment fade-in-then-semi-out">
-    Euclidean &rarr; How far apart are these rows?
+    Euclidean &rarr; How far apart are these vectors in space?
   </li>
   <li class="fragment fade-in-then-semi-out">
-    Dot Product &rarr; How aligned are they?
+    Dot Product &rarr; How aligned are they, factoring in magnitude?
   </li>
   <li class="fragment fade-in-then-semi-out">
-    Cosine &rarr; How similar is their meaning?
+    Cosine &rarr; How aligned are they, ignoring magnitude?
   </li>
 </ul>
 
 ---
 
 ## Euclidean Distance
-<!-- .slide: style="text-align: left;"> -->
+<!-- .slide: style="text-align: left;" -->
 
 $$ d(\mathbf{a}, \mathbf{b}) =
   \sqrt{(a_1 - b_1)^2 + (a_2 - b_2)^2 + \dots + (a_n - b_n)^2} $$
 
-- Measures the straight-line distance
-- Considers differences across all dimensions
-- Smaller distance = vectors are numerically closer
+<div style="display: flex; align-items: center; gap: 40px;">
+
+<div style="flex: 1;">
+
+- Measures the straight-line distance  
+- Considers differences across all dimensions  
+- Smaller distance = vectors are numerically closer  
+
+</div>
+
+<div style="flex: 1; text-align: center;">
+
+<img src="images/euclidean_distance.png" style="max-width: 100%; height: auto;" />
+
+</div>
+
+</div>
 
 ---
 
