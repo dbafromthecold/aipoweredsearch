@@ -20,11 +20,12 @@
 
 ## Session Aim
 <!-- .slide: style="text-align: left;"> -->
-To dive into how AI-Powered Search works<br>
-in SQL Server 2025
+To dive into how AI-Powered Search works in SQL Server 2025
 <br>
 <br>
+<span class="fragment fade-in" data-fragment-index="3">
 Starting from the ground up, we'll build an AI-Powered Search tool
+</span>
 
 ---
 
