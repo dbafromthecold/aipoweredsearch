@@ -359,7 +359,7 @@ WITH (
 
 <ul>
   <li>Requires preview features to be enabled</li>
-  <li>Vector indexes set a table to read only/li>
+  <li>Vector indexes set a table to read only</li>
   <li>Requires a single column, integer, clustered primary key</li>
   <li>No replication to subscribers</li>
   <li class="fragment fade-in">MAXDOP is ignored (currently, see SQL 2025 known issues)</li>
