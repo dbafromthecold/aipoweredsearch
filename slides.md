@@ -24,8 +24,14 @@ To dive into how AI-Powered Search works in SQL Server 2025
 <br>
 <br>
 <span class="fragment fade-in" data-fragment-index="3">
-Starting from the ground up, we'll build an AI-Powered Search tool
+Starting from the ground up, we'll build an AI-Powered Search tool!
 </span>
+
+---
+
+<p align="center">
+<img src="images/Burrito-Bot-Gif.gif" />
+</p>
 
 ---
 
@@ -45,12 +51,6 @@ with a
 ## Semantic Similarity Searching
 <!-- .slide: style="text-align: left;"> -->
 Semantic similarity search finds results with similar meaning, even when the exact words differ, by comparing vector embeddings generated from data.
-
----
-
-<p align="center">
-<img src="images/Burrito-Bot-Gif.gif" />
-</p>
 
 ---
 
@@ -149,7 +149,7 @@ PRINT @response1
 
 ## Generating Embeddings
 <!-- .slide: style="text-align: left;"> -->
-<pre><code data-line-numbers="1">AI_GENERATE_EMBEDDINGS(@search_text USE MODEL [text-embedding-3-small])
+<pre><code data-line-numbers="1">AI_GENERATE_EMBEDDINGS(@text USE MODEL [text-embedding-3-small])
 </pre></code>
 <br>
 - References an external model<br>
@@ -213,21 +213,18 @@ $$ d(\mathbf{a}, \mathbf{b}) =
   \sqrt{(a_1 - b_1)^2 + (a_2 - b_2)^2 + \dots + (a_n - b_n)^2} $$
 
 <div style="display: flex; align-items: center; gap: 40px;">
-
 <div style="flex: 1;">
 
-- Measures the straight-line distance  
-- Considers differences across all dimensions  
-- Smaller distance = vectors are numerically closer  
+- True geometric distance
+- Sensitive to magnitude
+- 0 = identical vectors
 
 </div>
-
 <div style="flex: 1; text-align: center;">
 
 <img src="images/euclidean_distance.png" style="max-width: 100%; height: auto;" />
 
 </div>
-
 </div>
 
 ---
@@ -243,10 +240,21 @@ $$
 a_1 b_1 + a_2 b_2 + a_3 b_3 + \dots + a_n b_n
 $$
 
-- Measures how strongly two vectors align
-- Influenced by both direction and magnitude
-- Larger value = stronger match
-- Forms the basis of cosine similarity
+<div style="display: flex; align-items: center; gap: 40px;">
+<div style="flex: 1;">
+
+- Alignment of vectors
+- Scales with magnitude
+- 0 = orthogonal vectors
+
+</div>
+<div style="flex: 1; text-align: center;">
+
+<img src="images/dot_product.png" style="max-width: 100%; height: auto;" />
+
+</div>
+</div>
+
 
 ---
 
@@ -260,10 +268,21 @@ $$
      {\Vert \mathbf{a} \Vert \ \Vert \mathbf{b} \Vert}
 $$
 
-- Measures the angle between vectors, not their size
-- Focuses purely on direction (meaning)
-- Mathematical range: -1 to 1
-- Semantic search values are typically between 0 and 1
+
+<div style="display: flex; align-items: center; gap: 40px;">
+<div style="flex: 1;">
+
+- Direction only
+- Scale invariant
+- Higher = more similar
+
+</div>
+<div style="flex: 1; text-align: center;">
+
+<img src="images/cosine_similarity.png" style="max-width: 100%; height: auto;" />
+
+</div>
+</div>
 
 ---
 
