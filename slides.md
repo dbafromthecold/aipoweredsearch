@@ -272,7 +272,7 @@ $$
 <div style="display: flex; align-items: center; gap: 40px;">
 <div style="flex: 1;">
 
-- Direction only
+- Angular similarity
 - Scale invariant
 - Higher = more similar
 
