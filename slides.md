@@ -49,7 +49,7 @@ with a
 ---
 
 <p align="center">
-<img src="images/Burrito-Bot-Gif-3.gif" />
+<img src="images/Burrito-Bot-Gif-4.gif" />
 </p>
 
 ---
