@@ -24,6 +24,20 @@ GO
 
 
 
+-- let's have a look at chunking the data
+SELECT rv.review_id, c.chunk
+FROM [data].[reviews] rv
+CROSS APPLY
+    AI_GENERATE_CHUNKS (
+        SOURCE = review_text, -- text to chunk
+        CHUNK_TYPE = FIXED,   -- method to chunk 
+        CHUNK_SIZE = 100,     -- character count size of each chunk
+        OVERLAP = 10          -- percentage of preceeding text to be included
+    ) AS c;
+GO
+
+
+
 -- generate embeddings using external model and insert into table
 -- remember, we want to incorporate meaning into the embeddings!
 -- check the execution plan!
@@ -48,14 +62,26 @@ GROUP BY rv.restaurant_id, d.name, d.city;
 
 
 -- let's have a look at the data!
-SELECT * 
+SELECT *
 FROM [data].[restaurants] r
 INNER JOIN [embeddings].[restaurant_review_embeddings] e ON r.id = e.restaurant_id;
 GO
 
 
-SELECT CAST(embeddings AS NVARCHAR(MAX)) FROM [embeddings].[restaurant_review_embeddings] Where id =1
+
+-- let's check out the embeddings column
+SELECT CAST([embeddings] AS JSON) 
+FROM [embeddings].[restaurant_review_embeddings] 
+WHERE id = 1;
 GO
+
+
+
+-- are those vectors normalised?
+SELECT VECTOR_NORM(embeddings, 'norm2') AS length
+FROM embeddings.restaurant_review_embeddings;
+GO
+
 
 
 --let's compare the size of the main table to the size of the embeddings table
