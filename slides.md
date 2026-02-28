@@ -48,6 +48,12 @@ with a
 
 ---
 
+<p align="center">
+<img src="images/Burrito-Bot-Gif-3.gif" />
+</p>
+
+---
+
 ## Semantic Similarity Searching
 <!-- .slide: style="text-align: left;"> -->
 Semantic similarity search finds results with similar meaning, even when the exact words differ, by comparing vector embeddings generated from data.
