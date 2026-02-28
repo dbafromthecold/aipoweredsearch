@@ -50,7 +50,7 @@ CREATE TABLE [data].[reviews](
 	review_name				NVARCHAR(150),
 	review_rating			TINYINT,
 	review_published_utc	NVARCHAR(50),
-	review_text				NVARCHAR(MAX))
+	review_text				NVARCHAR(MAX) COLLATE Latin1_General_100_CI_AS_SC_UTF8)
 	GO
 
 ALTER TABLE [data].[reviews] WITH CHECK ADD  CONSTRAINT [FK_data_reviews] FOREIGN KEY([restaurant_id])

@@ -75,6 +75,6 @@ GO
 SELECT rv.restaurant_id, rv.review_text
 FROM [data].[reviews] rv
 INNER JOIN [data].[restaurants] r ON rv.restaurant_id = r.id
-WHERE r.name = 'Texas Steakout'
+WHERE r.name = 'Salsa - Authentic Mexican Food'
 ORDER BY rv.restaurant_id ASC;
 GO

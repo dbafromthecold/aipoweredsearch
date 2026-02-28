@@ -10,6 +10,11 @@
 
 
 
+USE [burrito-bot-db];
+GO
+
+
+
 -- let's update the stored procedure to return the review data
 CREATE OR ALTER PROCEDURE [dbo].[search_restaurants]
     @question     NVARCHAR(MAX),
@@ -42,8 +47,10 @@ BEGIN
     INNER JOIN (SELECT
                     rv.restaurant_id as restaurant_id,
                     CONCAT(
-                        d.name, ' is a Mexican restaurant in ', d.city, '. ',
-                        'Customer reviews say:', CHAR(13) + CHAR(10),
+                        d.name COLLATE Latin1_General_100_CI_AS_SC_UTF8,
+                        N' is a Mexican restaurant in ',
+                        d.city COLLATE Latin1_General_100_CI_AS_SC_UTF8,
+                        N'. Customer reviews say:', CHAR(13) + CHAR(10),
                         STRING_AGG(
                             ' - ' + REPLACE(rv.review_text, CHAR(13) + CHAR(10), ' '),
                             CHAR(13) + CHAR(10)

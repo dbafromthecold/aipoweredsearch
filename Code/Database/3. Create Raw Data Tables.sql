@@ -28,8 +28,8 @@ CREATE TABLE [raw_data].[mexican_restaurant_reviews_Belfast](
 	[review_rating]			[tinyint] NOT NULL,
 	[review_published_utc]	[nvarchar](50) NOT NULL,
 	[review_relative_time]	[nvarchar](50) NOT NULL,
-	[review_text]			[nvarchar](max) NOT NULL,
-	[review_original_text]	[nvarchar](max) NOT NULL,
+	[review_text]			[nvarchar](max) COLLATE Latin1_General_100_CI_AS_SC_UTF8 NOT NULL,
+	[review_original_text]	[nvarchar](max) COLLATE Latin1_General_100_CI_AS_SC_UTF8 NOT NULL,
 	[review_maps_uri]		[nvarchar](200) NOT NULL
 ) ON [RAW_DATA]
 GO
@@ -48,8 +48,8 @@ CREATE TABLE [raw_data].[mexican_restaurant_reviews_Cork](
 	[review_rating]			[tinyint] NOT NULL,
 	[review_published_utc]	[nvarchar](50) NOT NULL,
 	[review_relative_time]	[nvarchar](50) NOT NULL,
-	[review_text]			[nvarchar](max) NOT NULL,
-	[review_original_text]	[nvarchar](max) NOT NULL,
+	[review_text]			[nvarchar](max) COLLATE Latin1_General_100_CI_AS_SC_UTF8 NOT NULL,
+	[review_original_text]	[nvarchar](max) COLLATE Latin1_General_100_CI_AS_SC_UTF8 NOT NULL,
 	[review_maps_uri]		[nvarchar](200) NOT NULL
 ) ON [RAW_DATA]
 GO
@@ -68,8 +68,8 @@ CREATE TABLE [raw_data].[mexican_restaurant_reviews_Dublin](
 	[review_rating]			[tinyint] NOT NULL,
 	[review_published_utc]	[nvarchar](50) NOT NULL,
 	[review_relative_time]	[nvarchar](50) NOT NULL,
-	[review_text]			[nvarchar](max) NOT NULL,
-	[review_original_text]	[nvarchar](max) NOT NULL,
+	[review_text]			[nvarchar](max) COLLATE Latin1_General_100_CI_AS_SC_UTF8 NOT NULL,
+	[review_original_text]	[nvarchar](max) COLLATE Latin1_General_100_CI_AS_SC_UTF8 NOT NULL,
 	[review_maps_uri]		[nvarchar](200) NOT NULL
 ) ON [RAW_DATA]
 GO
@@ -88,8 +88,8 @@ CREATE TABLE [raw_data].[mexican_restaurant_reviews_Galway](
 	[review_rating]			[tinyint] NOT NULL,
 	[review_published_utc]	[nvarchar](50) NOT NULL,
 	[review_relative_time]	[nvarchar](50) NOT NULL,
-	[review_text]			[nvarchar](max) NOT NULL,
-	[review_original_text]	[nvarchar](max) NOT NULL,
+	[review_text]			[nvarchar](max) COLLATE Latin1_General_100_CI_AS_SC_UTF8 NOT NULL,
+	[review_original_text]	[nvarchar](max) COLLATE Latin1_General_100_CI_AS_SC_UTF8 NOT NULL,
 	[review_maps_uri]		[nvarchar](200) NOT NULL
 ) ON [RAW_DATA]
 GO
@@ -108,8 +108,8 @@ CREATE TABLE [raw_data].[mexican_restaurant_reviews_Limerick](
 	[review_rating]			[tinyint] NOT NULL,
 	[review_published_utc]	[nvarchar](50) NOT NULL,
 	[review_relative_time]	[nvarchar](50) NOT NULL,
-	[review_text]			[nvarchar](max) NOT NULL,
-	[review_original_text]	[nvarchar](max) NOT NULL,
+	[review_text]			[nvarchar](max) COLLATE Latin1_General_100_CI_AS_SC_UTF8 NOT NULL,
+	[review_original_text]	[nvarchar](max) COLLATE Latin1_General_100_CI_AS_SC_UTF8 NOT NULL,
 	[review_maps_uri]		[nvarchar](200) NOT NULL
 ) ON [RAW_DATA]
 GO
@@ -128,8 +128,8 @@ CREATE TABLE [raw_data].[mexican_restaurant_reviews_Waterford](
 	[review_rating]			[tinyint] NOT NULL,
 	[review_published_utc]	[nvarchar](50) NOT NULL,
 	[review_relative_time]	[nvarchar](50) NOT NULL,
-	[review_text]			[nvarchar](max) NOT NULL,
-	[review_original_text]	[nvarchar](max) NOT NULL,
+	[review_text]			[nvarchar](max) COLLATE Latin1_General_100_CI_AS_SC_UTF8 NOT NULL,
+	[review_original_text]	[nvarchar](max) COLLATE Latin1_General_100_CI_AS_SC_UTF8 NOT NULL,
 	[review_maps_uri]		[nvarchar](200) NOT NULL
 ) ON [RAW_DATA]
 GO

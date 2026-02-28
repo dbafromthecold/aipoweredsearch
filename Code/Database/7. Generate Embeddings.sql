@@ -54,6 +54,9 @@ INNER JOIN [embeddings].[restaurant_review_embeddings] e ON r.id = e.restaurant_
 GO
 
 
+SELECT CAST(embeddings AS NVARCHAR(MAX)) FROM [embeddings].[restaurant_review_embeddings] Where id =1
+GO
+
 
 --let's compare the size of the main table to the size of the embeddings table
 EXEC sp_spaceused 'data.restaurants';
