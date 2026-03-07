@@ -295,9 +295,9 @@ $$
 ## Why Cosine Works for Burrito Bot
 <!-- .slide: style="text-align: left;"> -->
 
-- A longer restaurant description should not automatically rank higher
-- We want restaurants that mean the same thing, not just contain more words
-- Cosine normalizes vector length and compares semantic direction
+- Longer restaurant reviews shouldn’t automatically rank higher
+- We want reviews with similar meaning, not just more words
+- Cosine ignores vector length and compares semantic direction
 
 ---
 
