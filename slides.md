@@ -24,7 +24,12 @@ To dive into how AI-Powered Search works in SQL Server 2025
 <br>
 <br>
 <span class="fragment fade-in" data-fragment-index="3">
-Starting from the ground up, we'll build an AI-Powered Search tool!
+Starting from the ground up, we'll build an AI-Powered Search tool...
+</span>
+<br>
+<br>
+<span class="fragment fade-in" data-fragment-index="3">
+...to provide burrito recommendations in Ireland!
 </span>
 
 ---
@@ -195,23 +200,6 @@ PRINT @response1
 
 ---
 
-## Distance metrics
-<!-- .slide: style="text-align: left;"> -->
-
-<ul>
-  <li class="fragment fade-in-then-semi-out">
-    Euclidean &rarr; How far apart are these vectors in space?
-  </li>
-  <li class="fragment fade-in-then-semi-out">
-    Dot Product &rarr; How aligned are they, factoring in magnitude?
-  </li>
-  <li class="fragment fade-in-then-semi-out">
-    Cosine &rarr; How aligned are they, ignoring magnitude?
-  </li>
-</ul>
-
----
-
 ## Euclidean Distance
 <!-- .slide: style="text-align: left;" -->
 
@@ -261,7 +249,6 @@ $$
 </div>
 </div>
 
-
 ---
 
 ## Cosine Similarity
@@ -289,6 +276,23 @@ $$
 
 </div>
 </div>
+
+---
+
+## Distance metrics
+<!-- .slide: style="text-align: left;"> -->
+
+<ul>
+  <li class="fragment fade-in-then-semi-out">
+    Euclidean &rarr; How far apart are these vectors in space?
+  </li>
+  <li class="fragment fade-in-then-semi-out">
+    Dot Product &rarr; How aligned are they, factoring in magnitude?
+  </li>
+  <li class="fragment fade-in-then-semi-out">
+    Cosine &rarr; How aligned are they, ignoring magnitude?
+  </li>
+</ul>
 
 ---
 
