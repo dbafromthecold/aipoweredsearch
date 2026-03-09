@@ -209,16 +209,25 @@ PRINT @response1
 ## Magnitude
 <!-- .slide: style="text-align: left;"> -->
 
-<div style="text-align:center;">
-  <p class="fragment fade-in" data-fragment-index="1">
-    "I really love burritos"
-  </p>
+<section>
+<div class="r-vstack" style="font-size:1.6em; text-align:center;">
 
-  <p class="fragment fade-in" data-fragment-index="2">
-    vs<br>
-    I really really really really love burritos
-  </p>
+<p class="fragment fade-in" data-fragment-index="1">
+"I really love burritos"
+</p>
+
+<div class="fragment fade-in r-vstack" data-fragment-index="2">
+
+<p style="opacity:0.5; margin:0.3em 0;">
+vs
+</p>
+<p>
+"I really really really really love burritos"
+</p>
+
 </div>
+</div>
+</section>
 
 ---
 
