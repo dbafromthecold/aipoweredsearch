@@ -61,7 +61,19 @@ with a
 
 ## Semantic Similarity Searching
 <!-- .slide: style="text-align: left;"> -->
-Semantic similarity search finds results with similar meaning, even when the exact words differ, by comparing vector embeddings generated from data.
+Semantic similarity search finds results with **similar meaning**, even when the **exact words** differ, by comparing **vector embeddings** generated from data.
+
+---
+
+## But... how do we store meaning?
+<!-- .slide: style="text-align: left;"> -->
+
+<ul>
+<li class="fragment">Embeddings!</li>
+<li class="fragment">Embeddings are numeric vectors representing the semantic meaning of data </li>
+<li class="fragment">They position similar concepts closer together in high-dimensional space</li>
+<li class="fragment">In SQL Server, they are stored using the VECTOR data type</li>
+</ul>
 
 ---
 
@@ -69,12 +81,9 @@ Semantic similarity search finds results with similar meaning, even when the exa
 <!-- .slide: style="text-align: left;"> -->
 <ul>
 <li class="fragment">Get raw data</li>
-<li class="fragment">Chunk that data</li>
+<li class="fragment">Create reference to AI model</li>
 <li class="fragment">Generate embeddings</li>
-<li class="fragment">Perform exact search</li>
-<li class="fragment">Create vector index</li>
-<li class="fragment">Perform approximate search</li>
-<li class="fragment">Create stored procedure to be used by web interface</li>
+<li class="fragment">Search that data</li>
 </ul>
 
 ---
@@ -119,23 +128,20 @@ PRINT @response1
 
 ---
 
-## Chunking data
-<!-- .slide: style="text-align: left;"> -->
-- What data are we going to create embeddings from?
-- What level of granularity are we going to use?
-- Where are we going to store those embeddings?
-- How are we going to query those embeddings?
+## Chunking Data
+<!-- .slide: style="text-align: left;" -->
 
----
+Design decisions when creating embeddings:
 
-## Issues with chunking
-<!-- .slide: style="text-align: left;"> -->
-- Vector Database Limitations
-  - Single vector across large embeddings - becomes vague
-- Loss of context
-  - Splitting out into chunks can result in loss of context
-- Computational complexity
-  - More chunks, more embeddings, more maintenance
+- What text are we embedding?
+- What level of granularity should we use?
+- Where will the embeddings be stored?
+
+Trade-offs:
+
+- Large chunks → embeddings become vague
+- Small chunks → loss of context
+- More chunks → more embeddings to generate and maintain
 
 ---
 
@@ -165,15 +171,8 @@ PRINT @response1
 <br>
 - References an external model<br>
 - sp_invoke_external_endpoint enabled<br>
-- Where is that model located?
-
----
-
-## But what are embeddings?
-<!-- .slide: style="text-align: left;"> -->
-- Embeddings are numeric vectors representing the semantic meaning of data <br>
-- They position similar concepts closer together in high-dimensional space <br>
-- In SQL Server, they are stored using the VECTOR data type
+- Where is that model located?<br>
+- Stored using the VECTOR data type
 
 ---
 
@@ -200,8 +199,8 @@ PRINT @response1
 
 ---
 
-# Demo:
-# Generating Embeddings
+## Demo:
+## Generating Embeddings
 <!-- .slide: style="text-align: left;"> -->
 
 ---
@@ -379,8 +378,8 @@ GO
 
 ---
 
-# Demo:
-# Exact Vector Search
+## Demo:
+## Exact Vector Search
 <!-- .slide: style="text-align: left;"> -->
 
 ---
@@ -460,8 +459,9 @@ FROM vector_search(
 
 ---
 
-# Demo:
-# Approximate Search
+## Demo:
+## Approximate Search
+<!-- .slide: style="text-align: left;"> -->
 
 ---
 
