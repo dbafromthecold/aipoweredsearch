@@ -201,7 +201,7 @@ PRINT @response1
 ---
 
 # Demo:
-## Generating Embeddings
+# Generating Embeddings
 <!-- .slide: style="text-align: left;"> -->
 
 ---
@@ -210,7 +210,7 @@ PRINT @response1
 <!-- .slide: style="text-align: left;"> -->
 
 <section>
-<div class="r-vstack" style="font-size:1.6em; text-align:center;">
+<div class="r-vstack" style="font-size:1.2em; text-align:center;">
 
 <p class="fragment fade-in" data-fragment-index="1">
 "I really love burritos"
@@ -380,7 +380,7 @@ GO
 ---
 
 # Demo:
-## Exact Vector Search
+# Exact Vector Search
 <!-- .slide: style="text-align: left;"> -->
 
 ---
@@ -457,6 +457,11 @@ FROM vector_search(
 <p align="center">
 <img src="images/vector_search.png" />
 </p>
+
+---
+
+# Demo:
+# Approximate Search
 
 ---
 
