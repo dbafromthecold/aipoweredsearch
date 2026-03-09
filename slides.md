@@ -23,12 +23,12 @@
 To dive into how AI-Powered Search works in SQL Server 2025
 <br>
 <br>
-<span class="fragment fade-in" data-fragment-index="3">
+<span class="fragment fade-in" data-fragment-index="1">
 Starting from the ground up, we'll build an AI-Powered Search tool...
 </span>
 <br>
 <br>
-<span class="fragment fade-in" data-fragment-index="3">
+<span class="fragment fade-in" data-fragment-index="2">
 ...to provide burrito recommendations in Ireland!
 </span>
 
@@ -200,6 +200,28 @@ PRINT @response1
 
 ---
 
+# Demo:
+## Generating Embeddings
+<!-- .slide: style="text-align: left;"> -->
+
+---
+
+## Magnitude
+<!-- .slide: style="text-align: left;"> -->
+
+<div style="text-align:center;">
+  <p class="fragment fade-in" data-fragment-index="1">
+    "I really love burritos"
+  </p>
+
+  <p class="fragment fade-in" data-fragment-index="2">
+    vs<br>
+    I really really really really love burritos
+  </p>
+</div>
+
+---
+
 ## Euclidean Distance
 <!-- .slide: style="text-align: left;" -->
 
@@ -345,6 +367,12 @@ GO
 <p align="center">
 <img src="images/vector_distance.png" />
 </p>
+
+---
+
+# Demo:
+## Exact Vector Search
+<!-- .slide: style="text-align: left;"> -->
 
 ---
 
