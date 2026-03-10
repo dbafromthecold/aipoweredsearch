@@ -194,7 +194,7 @@ AI_GENERATE_EMBEDDINGS(@text USE MODEL [text-embedding-3-small])
 <div style="flex: 1;">
 <ul>
   <li>Stored in an optimized binary format</li>
-  <li>Exposed as JSON array of floating point numbers</li>
+  <li>Displayed as an array of floating point numbers</li>
   <li>Dictated by external model</li>
   <li>Float32 & Float16 supported</li>
 </ul>
