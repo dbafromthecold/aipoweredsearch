@@ -70,8 +70,8 @@ Semantic similarity search finds results with ***similar meaning***, even when t
 
 <ul>
 <li class="fragment">Embeddings!</li>
-<li class="fragment">Embeddings are numeric vectors representing the semantic meaning of data </li>
-<li class="fragment">They position similar concepts closer together in high-dimensional space</li>
+<li class="fragment">Numerical vectors representing the semantic meaning of data</li>
+<li class="fragment">Similar concepts are positioned closer together in high-dimensional space</li>
 <li class="fragment">In SQL Server, they are stored using the VECTOR data type</li>
 </ul>
 
