@@ -15,6 +15,13 @@ GO
 
 
 
+-- are those vectors normalised?
+SELECT VECTOR_NORM(embeddings, 'norm2') AS length
+FROM embeddings.restaurant_review_embeddings;
+GO
+
+
+
 -- let's perform a search using VECTOR_DISTANCE() using cosine distance
 -- include the actual execution plan
 -- 0: identical vectors 2: opposing vectors

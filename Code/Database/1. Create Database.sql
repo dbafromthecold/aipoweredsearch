@@ -38,5 +38,5 @@ CREATE DATABASE [burrito-bot-db]
  FILEGROUP [RAW_DATA] 
 ( NAME = N'burrito-bot-db-raw-data',	FILENAME = N'F:\SQLData1\burrito-bot-db-raw-data.ndf' ,		SIZE = 1048576KB , MAXSIZE = UNLIMITED, FILEGROWTH = 524288KB )
  LOG ON 
-( NAME = N'burrito-bot-db_log',			FILENAME = N'G:\SQLTLog1\burrito-bot-db_log.ldf' ,			SIZE = 5242880KB , MAXSIZE = UNLIMITED, FILEGROWTH = 524288KB );
+( NAME = N'burrito-bot-db_log',			FILENAME = N'G:\SQLTLog1\burrito-bot-db_log.ldf' ,			SIZE = 131072KB  , MAXSIZE = UNLIMITED, FILEGROWTH = 524288KB );
 GO

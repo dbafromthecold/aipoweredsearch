@@ -74,22 +74,3 @@ SELECT CAST([embeddings] AS JSON)
 FROM [embeddings].[restaurant_review_embeddings] 
 WHERE id = 1;
 GO
-
-
-
--- are those vectors normalised?
-SELECT VECTOR_NORM(embeddings, 'norm2') AS length
-FROM embeddings.restaurant_review_embeddings;
-GO
-
-
-
---let's compare the size of the main table to the size of the embeddings table
-EXEC sp_spaceused 'data.restaurants';
-GO
-
-EXEC sp_spaceused 'data.reviews';
-GO
-
-EXEC sp_spaceused 'embeddings.restaurant_review_embeddings';
-GO
