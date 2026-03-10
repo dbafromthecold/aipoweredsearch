@@ -61,7 +61,7 @@ with a
 
 ## Semantic Similarity Searching
 <!-- .slide: style="text-align: left;"> -->
-Semantic similarity search finds results with **similar meaning**, even when the **exact words** differ, by comparing **vector embeddings** generated from data.
+Semantic similarity search finds results with ***similar meaning***, even when the ***exact words*** differ, by comparing ***vector embeddings*** generated from data.
 
 ---
 
@@ -163,7 +163,7 @@ Trade-offs:
 
 ## Generating Embeddings
 <!-- .slide: style="text-align: left;"> -->
-<pre><code data-line-numbers="1">CREATE EXTERNAL MODEL [text-embedding-3-small]
+<pre><code data-line-numbers="1|2-8|10">CREATE EXTERNAL MODEL [text-embedding-3-small]
 WITH (
     LOCATION = 'https://burrito-bot.com/text-embedding-3-small?api-version=2023-05-15',
     API_FORMAT = 'Azure OpenAI',
@@ -175,10 +175,6 @@ WITH (
 AI_GENERATE_EMBEDDINGS(@text USE MODEL [text-embedding-3-small])
 </pre></code>
 <br>
-- References an external model<br>
-- sp_invoke_external_endpoint enabled<br>
-- Where is that model located?<br>
-- Stored using the VECTOR data type
 
 ---
 
@@ -205,8 +201,13 @@ AI_GENERATE_EMBEDDINGS(@text USE MODEL [text-embedding-3-small])
 
 ---
 
-## Demo:
-## Generating Embeddings
+# Demo:
+# Generating Embeddings
+<!-- .slide: style="text-align: left;"> -->
+
+---
+
+# Comparing vectors
 <!-- .slide: style="text-align: left;"> -->
 
 ---
@@ -384,8 +385,13 @@ GO
 
 ---
 
-## Demo:
-## Exact Vector Search
+# Demo:
+# Exact Search
+<!-- .slide: style="text-align: left;"> -->
+
+---
+
+# Indexing vectors
 <!-- .slide: style="text-align: left;"> -->
 
 ---
@@ -465,8 +471,8 @@ FROM vector_search(
 
 ---
 
-## Demo:
-## Approximate Search
+# Demo:
+# Approximate Search
 <!-- .slide: style="text-align: left;"> -->
 
 ---
