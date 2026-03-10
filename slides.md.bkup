@@ -111,6 +111,38 @@ Semantic similarity search finds results with ***similar meaning***, even when t
 
 ---
 
+## Starting off with the data
+<!-- .slide: style="text-align: left;"> -->
+<pre><code data-line-numbers="6|22-26|23">USE [burrito-bot-db];
+GO
+
+DECLARE @ApiKey    VARCHAR(100)  = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
+DECLARE @Keyword   VARCHAR(10)   = 'mexican';
+DECLARE @BaseUrl   VARCHAR(100)  = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
+DECLARE @Radius    VARCHAR(10)   = '20000';
+DECLARE @Latitude  VARCHAR(10)   = '53.3498';
+DECLARE @Longitude VARCHAR(10)   = '-6.2603';
+
+DECLARE @FullUrl VARCHAR(500);
+
+SET @FullUrl = @BaseUrl + '?location=' 
+         + @Latitude + ',' 
+         + @Longitude +
+         + '&radius=' + @Radius +
+         + '&type=restaurant' +
+         + '&keyword=' + @Keyword
+         + '&key=' + @ApiKey
+         PRINT @FullUrl
+
+DECLARE @ret1 INT, @response1 NVARCHAR(MAX)
+EXEC @ret1 = sp_invoke_external_rest_endpoint
+    @url = @FullUrl,
+    @response = @response1 OUTPUT;
+PRINT @response1
+</pre></code>
+
+---
+
 ## Raw Data
 <!-- .slide: style="text-align: left;"> -->
 <p align="center">
@@ -138,6 +170,25 @@ Trade-offs:
 - Large chunks: embeddings become vague
 - Small chunks: loss of context
 - More chunks: computationally expensive
+
+---
+
+## Database design
+<!-- .slide: style="text-align: left;"> -->
+<pre><code data-line-numbers="1|2-3|4-5|6-7|8-9|10-11|12-13">CREATE DATABASE [burrito-bot-db]
+ ON  PRIMARY 
+( NAME = N'burrito-bot-db', FILENAME = N'F:\SQLData1\burrito-bot-db.mdf' ), 
+ FILEGROUP [ARCHIVE] 
+( NAME = N'burrito-bot-db-archive', FILENAME = N'F:\SQLData1\burrito-bot-db-archive.ndf' ), 
+ FILEGROUP [DATA] 
+( NAME = N'burrito-bot-db-data', FILENAME = N'F:\SQLData1\burrito-bot-db-data.ndf' ,
+ FILEGROUP [EMBEDDINGS] 
+( NAME = N'burrito-bot-db-embeddings', FILENAME = N'F:\SQLData1\burrito-bot-db-embeddings.ndf' ), 
+ FILEGROUP [RAW_DATA] 
+( NAME = N'burrito-bot-db-raw-data', FILENAME = N'F:\SQLData1\burrito-bot-db-raw-data.ndf' )
+ LOG ON 
+( NAME = N'burrito-bot-db_log', FILENAME = N'G:\SQLTLog1\burrito-bot-db_log.ldf' )
+</pre></code>
 
 ---
 
