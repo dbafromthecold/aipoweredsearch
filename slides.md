@@ -132,16 +132,13 @@ PRINT @response1
 <!-- .slide: style="text-align: left;" -->
 
 Design decisions when creating embeddings:
-
 - What text are we embedding?
 - What level of granularity should we use?
-- Where will the embeddings be stored?
 
 Trade-offs:
-
-- Large chunks → embeddings become vague
-- Small chunks → loss of context
-- More chunks → more embeddings to generate and maintain
+- Large chunks: embeddings become vague
+- Small chunks: loss of context
+- More chunks: computationally expensive
 
 ---
 
@@ -166,7 +163,16 @@ Trade-offs:
 
 ## Generating Embeddings
 <!-- .slide: style="text-align: left;"> -->
-<pre><code data-line-numbers="1">AI_GENERATE_EMBEDDINGS(@text USE MODEL [text-embedding-3-small])
+<pre><code data-line-numbers="1">CREATE EXTERNAL MODEL [text-embedding-3-small]
+WITH (
+    LOCATION = 'https://burrito-bot.com/text-embedding-3-small?api-version=2023-05-15',
+    API_FORMAT = 'Azure OpenAI',
+    MODEL_TYPE = EMBEDDINGS,
+    MODEL = 'text-embedding-3-large',
+    CREDENTIAL = [https://burrito-bot-ai.openai.azure.com]
+);
+
+AI_GENERATE_EMBEDDINGS(@text USE MODEL [text-embedding-3-small])
 </pre></code>
 <br>
 - References an external model<br>
