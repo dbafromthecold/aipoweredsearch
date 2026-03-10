@@ -77,6 +77,29 @@ Semantic similarity search finds results with ***similar meaning***, even when t
 
 ---
 
+## The Vector Data Type in SQL 2025
+<!-- .slide: style="text-align: left;" -->
+
+<div style="display: flex; align-items: center; gap: 20px;">
+
+<div style="flex: 1;">
+<ul>
+  <li>Stored in an optimized binary format</li>
+  <li>Displayed as an array of floating point numbers</li>
+  <li>Dictated by external model</li>
+  <li>Float32 & Float16 supported</li>
+</ul>
+</div>
+
+<div style="flex: 1; text-align: center;">
+
+<img src="images/vector_column.png" style="max-width: 100%; height: auto;">
+
+</div>
+</div>
+
+---
+
 ## What are the steps?
 <!-- .slide: style="text-align: left;"> -->
 <ul>
@@ -183,29 +206,6 @@ WITH (
 AI_GENERATE_EMBEDDINGS(@text USE MODEL [text-embedding-3-small])
 </pre></code>
 <br>
-
----
-
-## The Vector Data Type in SQL 2025
-<!-- .slide: style="text-align: left;" -->
-
-<div style="display: flex; align-items: center; gap: 20px;">
-
-<div style="flex: 1;">
-<ul>
-  <li>Stored in an optimized binary format</li>
-  <li>Displayed as an array of floating point numbers</li>
-  <li>Dictated by external model</li>
-  <li>Float32 & Float16 supported</li>
-</ul>
-</div>
-
-<div style="flex: 1; text-align: center;">
-
-<img src="images/vector_column.png" style="max-width: 100%; height: auto;">
-
-</div>
-</div>
 
 ---
 
