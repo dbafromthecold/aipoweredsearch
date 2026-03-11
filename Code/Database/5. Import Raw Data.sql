@@ -15,13 +15,6 @@ GO
 
 
 
--- enabling external rest endpoint functionality
-EXEC sp_configure 'external rest endpoint enabled',1
-RECONFIGURE;
-GO
-
-
-
 -- pulling data into raw tables from CSV files
 BULK INSERT [raw_data].[mexican_restaurant_reviews_Belfast]
 FROM 'C:\git\aipoweredsearch\Data\Raw Data\reviews\mexican_restaurant_reviews_Belfast.csv'

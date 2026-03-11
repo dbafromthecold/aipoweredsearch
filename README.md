@@ -31,3 +31,6 @@ https://www.pinecone.io/learn/vector-similarity<br>
 <br>
 Cosine Similarity and Cosine Distance: <br>
 https://docs.singlestore.com/cloud/reference/sql-reference/vector-functions/cosine-similarity-and-cosine-distance<br>
+<br>
+Getting Started with Vector Search in SQL Server 2025 Using Ollama: <br>
+https://www.nocentino.com/posts/2025-05-19-ollama-sql-faststart/
