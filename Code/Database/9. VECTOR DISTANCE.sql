@@ -87,9 +87,9 @@ GO
 
 
 -- let's have a look at the other metrics
--- cosine 		        [0, 2]	 0: identical vectors 2: opposing vectors
+-- cosine distance      [0, 2]	 0: identical vectors 2: opposing vectors
 -- negative dot product	[-∞, +∞] Smaller numbers indicate more similar vectors
--- euclidean            [0, +∞]  0: identical vectors
+-- euclidean distance   [0, +∞]  0: identical vectors
 DECLARE @search_text   NVARCHAR(MAX) = 'Find me a restaurant with a good atmosphere';
 DECLARE @search_vector VECTOR(1536)  = AI_GENERATE_EMBEDDINGS(@search_text USE MODEL [text-embedding-3-small]);
 
