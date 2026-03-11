@@ -300,7 +300,7 @@ $$
 ---
 
 ## Normalised vectors
-
+<!-- .slide: style="text-align: left;"> -->
 - Vectors scaled so their magnitude = 1
 - Dot product = Cosine
 - Euclidean distance produces the same ranked results
