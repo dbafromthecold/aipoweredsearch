@@ -50,12 +50,13 @@ GO
 
 -- test generating embedding using AI_GENERATE_EMBEDDINGS referencing external model
 BEGIN
-    DECLARE @result NVARCHAR(MAX);
-    SET @result = (SELECT CONVERT(NVARCHAR(MAX), AI_GENERATE_EMBEDDINGS(N'test text' USE MODEL [text-embedding-3-small])))
-    SELECT AI_GENERATE_EMBEDDINGS(N'some test text' USE MODEL [text-embedding-3-small]) AS GeneratedEmbedding
+    DECLARE @result JSON;
+    SET @result = (SELECT AI_GENERATE_EMBEDDINGS(N'Some Test Text' USE MODEL [text-embedding-3-small]))
+
+    SELECT @result;
 
     IF @result IS NOT NULL
-        PRINT 'Model test successful. Result: ' + @result;
+        PRINT 'Model test successful'
     ELSE
         PRINT 'Model test failer. No result returner.';
 END;
