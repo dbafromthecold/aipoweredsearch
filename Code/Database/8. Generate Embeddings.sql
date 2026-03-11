@@ -40,7 +40,6 @@ GO
 
 -- generate embeddings using external model and insert into table
 -- remember, we want to incorporate meaning into the embeddings!
--- check the execution plan!
 INSERT INTO [embeddings].[restaurant_review_embeddings] (restaurant_id, embeddings)
 SELECT
     rv.restaurant_id,

@@ -21,19 +21,12 @@ GO
 
 
 
--- let's get the size of the table before we create that index
-EXEC sp_spaceused 'embeddings.restaurant_review_embeddings'
-GO
-
-
-
--- creating the index referencing the diskann algorithm (only one supported)
--- include the actual execution plan
+-- creating the index referencing the diskann algorithm
 CREATE VECTOR INDEX vec_idx ON [embeddings].[restaurant_review_embeddings]([embeddings])
 WITH (
     METRIC  = 'cosine', -- euclidean and dot also supported
-    TYPE    = 'diskann',
-    MAXDOP  = 8 -- set the parallelism of the create index operation - currently ignored!
+    TYPE    = 'diskann',-- only diskann supported
+    MAXDOP  = 8         -- set the parallelism of the create index operation - currently ignored!
 );
 GO
 
@@ -52,12 +45,6 @@ INSERT INTO [embeddings].[restaurant_review_embeddings]
      VALUES
            (999
            ,NULL)
-GO
-
-
-
--- and let's have a look at the size of the table now
-EXEC sp_spaceused 'embeddings.restaurant_review_embeddings'
 GO
 
 
