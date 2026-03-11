@@ -299,6 +299,15 @@ $$
 
 ---
 
+## Normalised vectors
+
+- Vectors scaled so their magnitude = 1
+- Dot product = Cosine
+- Euclidean distance produces the same ranked results
+
+---
+
+
 ## Exact Search
 <!-- .slide: style="text-align: left;"> -->
 <ul>
