@@ -1,4 +1,4 @@
-# AI-Powered Search
+# AI-Powered Search in SQL Server 2025
 
 ---
 
@@ -70,8 +70,8 @@ Semantic similarity search finds results with ***similar meaning***, even when t
 
 <ul>
 <li class="fragment">Embeddings!</li>
-<li class="fragment">Numerical vectors representing the semantic meaning of data</li>
-<li class="fragment">Similar concepts are positioned closer together in high-dimensional space</li>
+<li class="fragment">Numerical vectors representing the meaning of data</li>
+<li class="fragment">Similar concepts positioned closer in high-dimensional space</li>
 <li class="fragment">In SQL Server, they are stored using the VECTOR data type</li>
 </ul>
 
@@ -313,7 +313,7 @@ $$
 
 ## Vector Distance
 <!-- .slide: style="text-align: left;"> -->
-<pre><code data-line-numbers="1-2|2|4-15|13|16">DECLARE @search_text NVARCHAR(MAX) = 'Find me a restaurant with a 5 star rating';
+<pre><code data-line-numbers="1-2|2|4-15|13|16">DECLARE @search_text NVARCHAR(MAX) = 'Find me a restaurant with a great atmosphere';
 DECLARE @search_vector VECTOR(1536) = AI_GENERATE_EMBEDDINGS(@search_text USE MODEL [text-embedding-3-small]);
 
 SELECT TOP(1)
@@ -403,7 +403,7 @@ WITH (
 
 ## Vector Search
 <!-- .slide: style="text-align: left;"> -->
-<pre><code data-line-numbers="1-13|1-2|4-13|7|8|9|10|11|12">DECLARE @search_text NVARCHAR(MAX) = 'Find me a restaurant with a 5 star rating';
+<pre><code data-line-numbers="1-13|1-2|4-13|7|8|9|10|11|12">DECLARE @search_text NVARCHAR(MAX) = 'Find me a restaurant with a great atmosphere';
 DECLARE @search_vector VECTOR(1536) = AI_GENERATE_EMBEDDINGS(@search_text USE MODEL [text-embedding-3-small]);
 
 SELECT
