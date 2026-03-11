@@ -34,7 +34,7 @@ WITH (
     LOCATION = 'https://burrito-bot-ai.openai.azure.com/openai/deployments/text-embedding-3-small/embeddings?api-version=2023-05-15',
     API_FORMAT = 'Azure OpenAI',
     MODEL_TYPE = EMBEDDINGS,
-    MODEL = 'text-embedding-3-large',
+    MODEL = 'text-embedding-3-small',
     CREDENTIAL = [https://burrito-bot-ai.openai.azure.com]
 );
 GO

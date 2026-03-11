@@ -10,6 +10,18 @@
 
 
 
+USE [burrito-bot-db]
+GO
+
+
+
+-- ensure stored procedure functionality enabled
+EXEC sp_configure 'external rest endpoint enabled',1
+RECONFIGURE;
+GO
+
+
+
 -- setting variables for restaurants in Dublin
 DECLARE @ApiKey     VARCHAR(100)    = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
 DECLARE @Keyword    VARCHAR(10)     = 'mexican';

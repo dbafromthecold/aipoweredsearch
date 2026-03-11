@@ -81,6 +81,7 @@ SELECT rv.restaurant_id, rv.review_text
 FROM [data].[reviews] rv
 INNER JOIN [data].[restaurants] r ON rv.restaurant_id = r.id
 WHERE r.name = 'Salsa - Authentic Mexican Food'
+AND r.city = 'Dublin'
 ORDER BY rv.restaurant_id ASC;
 GO
 
@@ -99,10 +100,10 @@ SELECT TOP(10)
 	r.[city], 
 	r.[rating], 
 	r.[review_count], 
-	VECTOR_DISTANCE('cosine', @search_vector, e.embeddings) AS cosine,
-	VECTOR_DISTANCE('dot', @search_vector, e.embeddings) AS dot,
-	--CAST(VECTOR_DISTANCE('cosine', @search_vector, e.embeddings) - (1 + VECTOR_DISTANCE('dot', @search_vector, e.embeddings)) AS DECIMAL(20,18))  AS difference,
-	VECTOR_DISTANCE('euclidean', @search_vector, e.embeddings) AS euclidean
+	VECTOR_DISTANCE('cosine', @search_vector, e.embeddings) AS cosine--,
+	--VECTOR_DISTANCE('dot', @search_vector, e.embeddings) AS dot,
+	--CAST(VECTOR_DISTANCE('cosine', @search_vector, e.embeddings) - (1 + VECTOR_DISTANCE('dot', @search_vector, e.embeddings)) AS DECIMAL(20,18))  AS difference
+	--VECTOR_DISTANCE('euclidean', @search_vector, e.embeddings) AS euclidean
 FROM [data].[restaurants] r
 INNER JOIN [embeddings].[restaurant_review_embeddings] e ON r.id = e.restaurant_id
 ORDER BY cosine;

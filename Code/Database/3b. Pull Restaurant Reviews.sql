@@ -10,6 +10,19 @@
 
 
 
+
+USE [burrito-bot-db]
+GO
+
+
+
+-- ensure stored procedure functionality enabled
+EXEC sp_configure 'external rest endpoint enabled',1
+RECONFIGURE;
+GO
+
+
+
 -- declare variables
 DECLARE @ApiKey     VARCHAR(100) = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
 DECLARE @PlaceId    VARCHAR(50)  = 'ChIJYczaQt4PZ0gRsN10i1TxJk8';
