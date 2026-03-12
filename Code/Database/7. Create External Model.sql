@@ -41,6 +41,12 @@ GO
 
 
 
+-- confirm model
+SELECT * FROM sys.external_models;
+GO
+
+
+
 -- ensure stored procedure functionality enabled
 EXEC sp_configure 'external rest endpoint enabled',1
 RECONFIGURE;
