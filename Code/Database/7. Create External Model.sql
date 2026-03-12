@@ -23,7 +23,7 @@ GO
 
 -- create credential to hold API key used to access external model
 CREATE DATABASE SCOPED CREDENTIAL [https://burrito-bot-ai.openai.azure.com]
-WITH IDENTITY = 'HTTPEndpointHeaders', SECRET = N'{"api-key":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}'
+WITH IDENTITY = 'HTTPEndpointHeaders', SECRET = N'{"api-key":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}'
 GO
 
 
